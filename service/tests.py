@@ -134,6 +134,14 @@ class TestNegative(unittest.TestCase):
         expected_data = {'error': 'JSONDecodeError'}
         self.assertEqual(response.json(), expected_data)
 
+    def test_4_invalid_not_post(self):
+
+        response = requests.get(URL)
+        self.assertEqual(response.status_code, 405)
+
+        expected_data = {"error": "405 Method not allowed"}
+        self.assertEqual(response.json(), expected_data)
+
 
 if __name__ == '__main__':
     unittest.main()
