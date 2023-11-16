@@ -1,0 +1,20 @@
+[
+    {
+        "name": "User profile",
+        "username": "text",
+        "phone": "phone",
+        "lead_email": "email",
+        "created_at": "date"
+    },
+    {
+        "name": "Order",
+        "username": "text",
+        "description": "text",
+        "created_at": "date"
+    },
+    {
+        "name": "Support ticket",
+        "ticket": "text",
+        "created_at": "date"
+    }
+]

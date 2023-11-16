@@ -1,6 +1,6 @@
-from utils import parse_body, validate_body
+from utils import parse_body, annotype_body
+from utils import find_form
 import json
-import copy
 
 
 def get_form(request):
@@ -9,6 +9,6 @@ def get_form(request):
     if 'error' in body:
         return json.dumps(body)
 
-    validated_body = validate_body(body)
-
-    return json.dumps(validated_body)
+    annotyped_body = annotype_body(body)
+    data = find_form(annotyped_body)
+    return data

@@ -1,5 +1,6 @@
 import json
 import socket
+from db import init_db
 from views import get_form
 from utils import parse_request
 
@@ -33,6 +34,7 @@ def generate_response(request):
     method, url = parse_request(request)
     headers, code = generate_headers(method, url)
     body = generate_content(request, code, url)
+    body = json.dumps(body) if isinstance(body, dict) else body
     return (headers + body).encode('utf-8')
 
 
@@ -45,8 +47,6 @@ def run():
     while True:
         client_socket, addr = server_socket.accept()
         request = client_socket.recv(1024)
-        print(request)
-        print()
 
         response = generate_response(request.decode('utf-8'))
 
@@ -55,4 +55,5 @@ def run():
 
 
 if __name__ == '__main__':
+    init_db()
     run()
