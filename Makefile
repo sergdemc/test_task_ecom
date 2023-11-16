@@ -5,9 +5,20 @@ start-mongo:
 stop-mongo:
 	docker stop my-mongo
 
-create-db:
-	docker exec -it my-mongo mongo my_database --eval "db.createCollection('forms')"
+server:
+	python3 -m service.main
 
-import-data:
-	docker exec -it my-mongo mongoimport --db my_database --collection forms --file db_data.json --jsonArray
+start:
+	start-mongo
+	server
 
+requirements:
+	poetry export -f requirements.txt --output requirements.txt
+
+test:
+	python3 -m service.tests -v
+
+
+
+check:
+	flake8 service && isort service

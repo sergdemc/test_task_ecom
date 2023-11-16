@@ -16,5 +16,10 @@
         "name": "Support ticket",
         "ticket": "text",
         "created_at": "date"
+    },
+    {
+        "name": "SOS",
+        "sos_phone": "phone",
+        "sos_email": "email"
     }
 ]

@@ -1,4 +1,5 @@
 import json
+import os
 
 from pymongo import MongoClient
 from pymongo.server_api import ServerApi
@@ -9,6 +10,7 @@ db = client.service_db
 
 
 def init_db():
-    with open('../db_data.json') as f:
+    json_file = os.path.join(os.path.dirname(__file__), '..', 'db_data.json')
+    with open(json_file) as f:
         data = json.load(f)
         db.forms.insert_many(data)

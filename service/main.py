@@ -1,8 +1,9 @@
 import json
 import socket
-from db import init_db
-from views import get_form
-from utils import parse_request
+
+from service.db import init_db
+from service.utils import parse_request
+from service.views import get_form
 
 URLS = {
     '/get_form': get_form,
@@ -47,6 +48,7 @@ def run():
     while True:
         client_socket, addr = server_socket.accept()
         request = client_socket.recv(1024)
+        print(request)
 
         response = generate_response(request.decode('utf-8'))
 

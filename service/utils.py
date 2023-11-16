@@ -1,7 +1,8 @@
 import copy
 import json
-from db import db
-from validators import validate_email, validate_phone, validate_date
+
+from service.db import db
+from service.validators import validate_date, validate_email, validate_phone
 
 VALIDATORS = {
     'date': validate_date,
@@ -14,13 +15,11 @@ VALIDATORS = {
 def parse_body(request) -> dict:
     request_parts = request.split('\r\n\r\n')
     body = request_parts[1]
-
     try:
         body_dict = json.loads(body)
         return body_dict
-    except json.JSONDecodeError as e:
-        print("Ошибка декодирования JSON:", e)
-        return {'error': f'JSONDecodeError: {e}'}
+    except json.JSONDecodeError:
+        return {'error': 'JSONDecodeError'}
 
 
 def parse_request(request):
@@ -55,7 +54,6 @@ def get_forms():
 def find_form(body: dict) -> str | dict:
     result = []
     forms = get_forms()
-    print(forms)
     for form in forms:
         form_name = form.pop('name')
         if all(item in body.items() for item in form.items()):

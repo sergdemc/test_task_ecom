@@ -1,6 +1,6 @@
-from utils import parse_body, annotype_body
-from utils import find_form
 import json
+
+from service.utils import annotype_body, find_form, parse_body
 
 
 def get_form(request):
