@@ -22,7 +22,7 @@ coverage:
 	pytest --cov=service --cov-report=term-missing
 
 install:
-	python3 pip install -r requirements.txt
+	pip install -r requirements.txt
 
 check:
 	flake8 service && isort service
