@@ -42,14 +42,14 @@ The project uses Docker to run the database. To install Docker use its [official
 To use the application, you need to clone the repository to your computer. This is done using the `git clone` command. Clone the project:
 
 ```bash
->> git clone git@github.com:sergdemc/test_task_ecom.git && cd test_task_ecom 
+git clone git@github.com:sergdemc/test_task_ecom.git && cd test_task_ecom 
 ```
 
 Then you have to install all necessary dependencies in a virtual environment:
 
 ```bash
->> make venv
->> make install
+make venv
+make install
 ```
 
 ## Usage
