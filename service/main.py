@@ -12,7 +12,7 @@ URLS = {
 ALLOWED_METHODS = ['POST',]
 
 
-def generate_headers(method, url):
+def generate_headers(method, url) -> tuple[str, int]:
     if url not in URLS:
         return 'HTTP/1.1 404 Not found\n\n', 404
 
@@ -22,7 +22,7 @@ def generate_headers(method, url):
     return 'HTTP/1.1 200 OK\n\n', 200
 
 
-def generate_content(request, code, url):
+def generate_content(request, code, url) -> str | dict:
     if code == 404:
         return json.dumps({'error': '404 Not found'})
     if code == 405:
@@ -31,7 +31,7 @@ def generate_content(request, code, url):
     return URLS[url](request)  # get_form()
 
 
-def handle_request(request):
+def handle_request(request) -> bytes:
     method, url = parse_request(request)
     headers, code = generate_headers(method, url)
     body = generate_content(request, code, url)

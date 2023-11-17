@@ -22,7 +22,7 @@ def parse_body(request) -> dict:
         return {'error': 'JSONDecodeError'}
 
 
-def parse_request(request):
+def parse_request(request) -> tuple[str, str]:
     parsed = request.split(' ')
     method = parsed[0]
     url = parsed[1]
@@ -42,7 +42,7 @@ def annotype_body(data: dict) -> dict:
     return validated_data
 
 
-def get_forms():
+def get_forms() -> list[dict] | None:
     try:
         forms = [el for el in db.forms.find({}, {'_id': 0})]
         return forms

@@ -17,7 +17,7 @@ Example of a response if the form is found:
 ```
 And if the form is not found:
 ```bash
-{"field_email": "email", "field_phone": "phone"}
+'{"field_email": "email", "field_phone": "phone"}'
 ```
 
 ## Installation

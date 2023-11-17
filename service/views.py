@@ -3,7 +3,7 @@ import json
 from service.utils import annotype_body, find_form, parse_body
 
 
-def get_form(request):
+def get_form(request) -> str | dict:
     body = parse_body(request)
 
     if 'error' in body:
