@@ -26,7 +26,7 @@ And if the form is not found:
 
 #### Python
 
-Before installing the package make sure you have Python version 3.8 or higher installed:
+Before installing the package make sure you have Python version 3.8.1 or higher installed:
 
 ```bash
 >> python --version
@@ -77,6 +77,10 @@ make server
 To run tests use:
 ```bash
 make test
+```
+To run tests with coverage use:
+```bash
+make coverage
 ```
 
 Stop the database server:

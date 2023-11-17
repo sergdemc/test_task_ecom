@@ -31,7 +31,7 @@ def generate_content(request, code, url):
     return URLS[url](request)  # get_form()
 
 
-def generate_response(request):
+def handle_request(request):
     method, url = parse_request(request)
     headers, code = generate_headers(method, url)
     body = generate_content(request, code, url)
@@ -50,7 +50,7 @@ def run():
         request = client_socket.recv(1024)
         print(request)
 
-        response = generate_response(request.decode('utf-8'))
+        response = handle_request(request.decode('utf-8'))
 
         client_socket.sendall(response)
         client_socket.close()

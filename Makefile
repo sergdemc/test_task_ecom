@@ -13,10 +13,13 @@ start:
 	make server
 
 requirements:
-	poetry export -f requirements.txt --output requirements.txt --without-hashes
+	poetry export -f requirements.txt --output requirements.txt --without-hashes --with dev
 
 test:
-	python3 -m service.tests -v
+	pytest -v
+
+coverage:
+	pytest --cov=service --cov-report=term-missing
 
 venv:
 	python3 -m venv venv && source venv/bin/activate
