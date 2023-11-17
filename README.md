@@ -45,10 +45,9 @@ To use the application, you need to clone the repository to your computer. This 
 git clone git@github.com:sergdemc/test_task_ecom.git && cd test_task_ecom 
 ```
 
-Then you have to install all necessary dependencies in a virtual environment:
+Then you have to install all necessary dependencies in your virtual environment:
 
 ```bash
-make venv
 make install
 ```
 
